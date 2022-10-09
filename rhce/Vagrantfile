@@ -1,0 +1,74 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|  
+  config.vm.define "workstation" do |workstation|
+    workstation.vm.box = "generic/rhel8"
+    workstation.vm.hostname = "workstation.example.com"
+    workstation.vm.box_url = "generic/rhel8"
+
+    workstation.vm.network :private_network, ip: "10.0.0.2"
+
+    workstation.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 1024]
+      v.customize ["modifyvm", :id, "--name", "workstation"]
+    end
+
+  config.vm.define "servera" do |servera|
+    servera.vm.box = "generic/rhel8"
+    servera.vm.hostname = "servera.example.com"
+    servera.vm.box_url = "generic/rhel8"
+
+    servera.vm.network :private_network, ip: "10.0.0.2"
+
+    workstation.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 1024]
+      v.customize ["modifyvm", :id, "--name", "servera"]
+    end
+
+  config.vm.define "serverb" do |workstation|
+    workstation.vm.box = "generic/rhel8"
+    workstation.vm.hostname = "workstation"
+    workstation.vm.box_url = "generic/rhel8"
+
+    workstation.vm.network :private_network, ip: "10.0.0.2"
+
+    workstation.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 1024]
+      v.customize ["modifyvm", :id, "--name", "workstation"]
+    end
+  config.vm.define "workstation" do |workstation|
+    workstation.vm.box = "generic/rhel8"
+    workstation.vm.hostname = "workstation"
+    workstation.vm.box_url = "generic/rhel8"
+
+    workstation.vm.network :private_network, ip: "10.0.0.2"
+
+    workstation.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 1024]
+      v.customize ["modifyvm", :id, "--name", "workstation"]
+    end
+  config.vm.define "workstation" do |workstation|
+    workstation.vm.box = "generic/rhel8"
+    workstation.vm.hostname = "workstation"
+    workstation.vm.box_url = "generic/rhel8"
+
+    workstation.vm.network :private_network, ip: "10.0.0.2"
+
+    workstation.vm.provider :virtualbox do |v|
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--memory", 1024]
+      v.customize ["modifyvm", :id, "--name", "workstation"]
+    end
+   
+    
+    config.vm.provision "ansible" do |ansible|
+      ansible.verbose = "v"
+      ansible.playbook = "playbook.yml"
+    end
+  end    
+end
