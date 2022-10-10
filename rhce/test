@@ -16,6 +16,7 @@ N = 5
 # any node not defined will be configured as the default...
 # which is 1vCPU/512mb...So if setting custom requirements
 # only define any node which requires more than the defaults.
+test
 nodes = [
   {
     :node => "node0",
