@@ -16,31 +16,30 @@ N = 5
 # any node not defined will be configured as the default...
 # which is 1vCPU/512mb...So if setting custom requirements
 # only define any node which requires more than the defaults.
-test
 nodes = [
   {
     :node => "node0",
-    :box => "mrlesmithjr/trusty64",
+    :box => "generic/rhel8",
     :cpu => 1,
     :mem => 1024
   },
   {
     :node => "node1",
-    :box => "mrlesmithjr/jessie64",
+    :box => "generic/rhel8",
     :cpu => 1,
-    :mem => 512
+    :mem => 1024
   },
   {
     :node => "node3",
-    :box => "mrlesmithjr/centos-7",
+    :box => "generic/rhel8",
     :cpu => 1,
-    :mem => 512
+    :mem => 1024
   },
   {
     :node => "node4",
-    :box => "mrlesmithjr/fedora-23",
+    :box => "generic/rhel8",
     :cpu => 1,
-    :mem => 512
+    :mem => 1024
   }
 ]
 
@@ -70,7 +69,7 @@ ansible_groups = {
     "node1"
   ]
 }
-box = "mrlesmithjr/trusty64"  #Define Vagrant box to load
+box = "generic/rhel8"  #Define Vagrant box to load
 custom_cpu_mem = "yes"  #Define if custom cpu and memory requirements are needed (yes| no)...defined within nodes variable above
 desktop = "no"  #Define if running desktop OS (yes | no)
 enable_custom_boxes = "no"  #Define if custom boxes should be used...defined in nodes var..
