@@ -14,11 +14,6 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--memory", 1024]
       v.customize ["modifyvm", :id, "--name", "workstation"]
     end
-
-    config.vm.provision "ansible" do |ansible|
-      ansible.verbose = "v"
-      ansible.playbook = "playbook.yml"
-    end
   end
 
   config.vm.define "servera" do |servera|
@@ -32,11 +27,6 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--memory", 1024]
       v.customize ["modifyvm", :id, "--name", "servera"]
-    end
-
-    config.vm.provision "ansible" do |ansible|
-      ansible.verbose = "v"
-      ansible.playbook = "playbook.yml"
     end
   end
 
@@ -52,11 +42,6 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--memory", 1024]
       v.customize ["modifyvm", :id, "--name", "serverb"]
     end
-
-    config.vm.provision "ansible" do |ansible|
-      ansible.verbose = "v"
-      ansible.playbook = "playbook.yml"
-    end
   end
 
   config.vm.define "serverc" do |serverc|
@@ -70,11 +55,6 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--memory", 1024]
       v.customize ["modifyvm", :id, "--name", "serverc"]
-    end
-
-    config.vm.provision "ansible" do |ansible|
-      ansible.verbose = "v"
-      ansible.playbook = "playbook.yml"
     end
   end
 
