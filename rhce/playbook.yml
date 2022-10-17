@@ -7,6 +7,12 @@
       yum:
        name: '*'
        state: latest
+      register: result
+
+    - name: debug result
+      debug:
+        var: result
 
     - name: Reboot after updates
       reboot:
+      when: ???
