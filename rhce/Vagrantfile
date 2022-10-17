@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.configure("2") do |config|  
+Vagrant.configure("2") do |config|
   config.vm.define "workstation" do |workstation|
     workstation.vm.box = "generic/rhel8"
     workstation.vm.hostname = "workstation.example.com"
@@ -14,6 +14,12 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--memory", 1024]
       v.customize ["modifyvm", :id, "--name", "workstation"]
     end
+
+    config.vm.provision "ansible" do |ansible|
+      ansible.verbose = "v"
+      ansible.playbook = "playbook.yml"
+    end
+  end
 
   config.vm.define "servera" do |servera|
     servera.vm.box = "generic/rhel8"
@@ -28,6 +34,12 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--name", "servera"]
     end
 
+    config.vm.provision "ansible" do |ansible|
+      ansible.verbose = "v"
+      ansible.playbook = "playbook.yml"
+    end
+  end
+
   config.vm.define "serverb" do |serverb|
     serverb.vm.box = "generic/rhel8"
     serverb.vm.hostname = "serverb"
@@ -40,6 +52,12 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--memory", 1024]
       v.customize ["modifyvm", :id, "--name", "serverb"]
     end
+
+    config.vm.provision "ansible" do |ansible|
+      ansible.verbose = "v"
+      ansible.playbook = "playbook.yml"
+    end
+  end
 
   config.vm.define "serverc" do |serverc|
     serverc.vm.box = "generic/rhel8"
@@ -54,6 +72,12 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--name", "serverc"]
     end
 
+    config.vm.provision "ansible" do |ansible|
+      ansible.verbose = "v"
+      ansible.playbook = "playbook.yml"
+    end
+  end
+
   config.vm.define "serverd" do |serverd|
     serverd.vm.box = "generic/rhel8"
     serverd.vm.hostname = "serverd"
@@ -66,11 +90,10 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--memory", 1024]
       v.customize ["modifyvm", :id, "--name", "serverd"]
     end
-   
-    
+
     config.vm.provision "ansible" do |ansible|
       ansible.verbose = "v"
       ansible.playbook = "playbook.yml"
     end
-  end    
+  end
 end
