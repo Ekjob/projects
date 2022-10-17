@@ -1,0 +1,12 @@
+---
+- name: Provision vm
+  hosts: all
+  become: true
+  tasks:
+    - name: Ensure packages are up-to-date
+      yum:
+       name: '*'
+       state: latest
+
+    - name: Reboot after updates
+      reboot:
