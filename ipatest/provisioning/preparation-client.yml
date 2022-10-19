@@ -21,11 +21,11 @@
         - bind-utils
       state: present
 
-  - name: Add ntpd and firewall for ipa
+  - name: Add chrony and firewall for ipa
     yum:
       name:
         - firewalld
-        - ntp
+        - chrony
       state: present
 
   - name: enable firewalld
