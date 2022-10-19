@@ -15,4 +15,4 @@
 
     - name: Reboot after updates
       reboot:
-      when: ???
+      when: result.changed == true
