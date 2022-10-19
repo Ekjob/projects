@@ -21,7 +21,7 @@
         - bind-utils
       state: present
 
-  - name: Add ntpd and firewall for ipa
+  - name: Add chrony and firewall for ipa
     yum:
       name:
         - firewalld
@@ -35,7 +35,7 @@
       enabled: yes
     with_items:
       - firewalld
-      - ntpd
+      - chrony
 
   - name: delete the loopback address
     lineinfile:
