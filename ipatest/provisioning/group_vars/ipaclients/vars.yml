@@ -1,0 +1,5 @@
+---
+ipaclient_domain: example.com
+ipaadmin_principal: admin
+ipaadmin_password: redhatKK
+ipaclient_servers: idm-server.example.com
