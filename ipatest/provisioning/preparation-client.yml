@@ -35,7 +35,7 @@
       enabled: yes
     with_items:
       - firewalld
-      - ntpd
+      - chrony
 
   - name: delete the loopback address
     lineinfile:
