@@ -1,0 +1,8 @@
+---
+ipaadmin_password: redhat
+ipadm_password: redhat
+ipaserver_domain: example.com
+ipaserver_realm: EXAMPLE.COM
+ipaserver_setup_dns: no
+ipaserver_auto_forwarders: no
+ipaserver_install_packages: yes
