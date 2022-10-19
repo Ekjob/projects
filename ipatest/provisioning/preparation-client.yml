@@ -35,7 +35,7 @@
       enabled: yes
     loop:
       - firewalld
-      - ntpd
+      - chronyd
 
   - name: delete the loopback address
     lineinfile:
