@@ -25,7 +25,7 @@
     yum:
       name:
         - firewalld
-        - ntp
+        - chrony
       state: present
 
   - name: enable firewalld
